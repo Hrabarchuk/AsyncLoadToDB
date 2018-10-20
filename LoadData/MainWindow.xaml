@@ -1,0 +1,40 @@
+﻿<Window x:Class="LoadData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoadData"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="479.347" Width="784.475">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,10,0">
+            <StackPanel>
+                <Label Grid.Column="0" Content="Товари" FontSize="11" Margin="0,0,0,0"/>
+                <DataGrid VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="350" ItemsSource="{Binding Good}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Group" Binding="{Binding Group}" />
+                        <DataGridTextColumn Header="Firm" Binding="{Binding Firm}" />
+                        <DataGridTextColumn Header="Model" Binding="{Binding Model}" />
+                        <DataGridTextColumn Header="TehnicalInfo" Binding="{Binding TehnicalInfo}" />
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
+                        <DataGridTextColumn Header="Count" Binding="{Binding Count}" />
+                        <DataGridTextColumn Header="Warranty" Binding="{Binding Warranty}" />
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                        <DataGridTextColumn Header="DateReception" Binding="{Binding DateReception}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid Height="30">
+                    <Button Width="100" Height="20" Content="LoadToDataBase" HorizontalAlignment="Right" Command="{Binding LoadToDataBase}"/>
+                    <Border Width="200" Height="30" >
+                        <Label Content="{Binding CountLoad , Mode=OneWay}"  HorizontalAlignment="Center"  />
+                    </Border>
+                    <Button Width="100" Height="20"  IsEnabled="{Binding StopLoadEnable}" Content="StopLoadToDB" HorizontalAlignment="Left" Command="{Binding StopLoad}"/>
+                </Grid>
+
+                <ProgressBar Minimum="0" Maximum="{Binding MaxValueBar}" Value="{Binding CurrentProgress, Mode=OneWay}" Height="20" Visibility="{Binding ProgressVisibility}"  />
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
